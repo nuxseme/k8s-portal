@@ -1,7 +1,7 @@
 {
-    "title": "tite",
+    "title": "k8s protal",
     "author": "nuxseme",
-    "description": "description",
+    "description": "k8s portal",
     "language": "zh-hans",
     "gitbook": "3.2.3",
     "outputfile": "SUMMARY.md",
@@ -18,7 +18,7 @@
     },
     "links": {
         "Github": {
-            "Github": "https://github.com/nuxseme/project"
+            "Github": "https://github.com/nuxseme/k8s-portal"
         }
     },
     "plugins": [
@@ -40,7 +40,7 @@
     ],
     "pluginsConfig": {
         "github": {
-            "url": "https://github.com/nuxseme/project"
+            "url": "https://github.com/nuxseme/k8s-portal"
         },
         "github-buttons": {
             "buttons": [{

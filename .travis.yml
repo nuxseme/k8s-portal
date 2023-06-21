@@ -33,4 +33,4 @@ branches:
     - master
 env:
  global:
-   - GH_REF: github.com/nuxseme/project.git
+   - GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
