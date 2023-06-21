@@ -1,0 +1,36 @@
+name: GitHub Pages CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+      env:
+        GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
+    - run: |
+	npm install -g n
+	npm install gitbook-cli -g
+        npm install -g gitbook-summary
+	gitbook -v
+        gitbook install
+        gitbook build
+	book sm
+        cd ./_book
+        ls  -al
+        git init
+        git config --global user.name "nuxseme"
+        git config --global user.email "nuxseme@gmail.com"
+        git add .
+        git commit -m "Auto deploy from Githun Actions"
+        git push --force  "https://${ACCESS_TOKEN}@${GH_REF}" master:master
