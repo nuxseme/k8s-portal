@@ -35,4 +35,5 @@ jobs:
           git config --global user.email "nuxseme@gmail.com"
           git add .
           git commit -m "Auto deploy from Githun Actions"
-          git push --force  "https://${ACCESS_TOKEN}@${GH_REF}" master:master
+          echo ${{ACCESS_TOKEN}}@${{GH_REF}}
+          git push --force  "https://${{ACCESS_TOKEN}}@${{GH_REF}}" master:master
