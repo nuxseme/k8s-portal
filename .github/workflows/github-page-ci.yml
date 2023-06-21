@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [12.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -20,6 +20,7 @@ jobs:
         env:
           GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
         run: |
+          node -v
           npm install -g n
           npm install gitbook-cli -g
           npm install -g gitbook-summary
