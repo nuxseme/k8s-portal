@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+      - name: build
         env:
           GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
         run: |
