@@ -20,6 +20,7 @@ jobs:
         env:
           GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
         run: |
+          echo ${{ secrets.TEST }}
           echo ${{ secrets.ACCESS_TOKEN }}@$GH_REF
           node -v
           npm install -g n
