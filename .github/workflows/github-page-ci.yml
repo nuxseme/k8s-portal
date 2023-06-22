@@ -10,6 +10,10 @@ jobs:
       matrix:
         node-version: [10.x]
     steps:
+      - name: test
+        run: |
+          echo ${{ secrets.TEST }}
+          echo $GH_REF
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -20,8 +24,6 @@ jobs:
         env:
           GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
         run: |
-          echo ${{ secrets.TEST }}
-          echo $GH_REF
           node -v
           npm install -g n
           npm install gitbook-cli -g
