@@ -11,9 +11,28 @@ jobs:
         node-version: [10.x]
     steps:
       - uses: actions/checkout@v3
-      - name: test
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: build
         env:
-           GH_REF: github@nuxse.com/nuxse
+          GH_REF: github.com/nuxseme/k8s-portal-gitbook.git
         run: |
-          echo ${{ secrets.TEST }}
-          echo $GH_REF
+          node -v
+          npm install -g n
+          npm install gitbook-cli -g
+          npm install -g gitbook-summary
+          gitbook -v
+          gitbook install
+          gitbook build
+          book sm
+          cd ./_book
+          ls  -al
+          git init
+          git config --global user.name "nuxseme"
+          git config --global user.email "nuxseme@gmail.com"
+          git add .
+          git commit -m "Auto deploy from Githun Actions"
+          git push --force  "https://${{ secrets.ACCESS_TOKEN }}@$GH_REF" master:master
