@@ -26,8 +26,8 @@ jobs:
           npm install -g gitbook-summary
           gitbook -v
           gitbook install
-          gitbook build
           book sm
+          gitbook build
           cd ./_book
           ls  -al
           curl -u nuxse:${{ secrets.ACCESS_TOKEN }} https://api.github.com/user/repos -d '{ "name": "k8s-portal-gitbook" }'
