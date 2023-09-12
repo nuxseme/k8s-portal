@@ -1,21 +1,21 @@
-# Deployment
+# daemonSet
 
-### Deploy.yaml
+
+
+### daemonSet.yaml
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   creationTimestamp: null
   labels:
-    app: nginx-deploy
-  name: nginx-deploy
+    app: nginx-ds
+  name: nginx-ds
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: nginx-pod
-  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -33,6 +33,10 @@ spec:
         volumeMounts:
         - mountPath: /etc/nginx/conf.d
           name: nginx-config
+      tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
+        operator: Exists
 status: {}
 ```
 

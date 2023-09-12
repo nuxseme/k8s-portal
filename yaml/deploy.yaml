@@ -1,8 +1,3 @@
-# Deployment
-
-### Deploy.yaml
-
-```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,5 +29,3 @@ spec:
         - mountPath: /etc/nginx/conf.d
           name: nginx-config
 status: {}
-```
-
